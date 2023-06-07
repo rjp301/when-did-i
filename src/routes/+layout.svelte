@@ -8,6 +8,7 @@
 
   import { AppBar, AppShell } from "@skeletonlabs/skeleton";
   import { page } from "$app/stores";
+  import Header from "$lib/components/Header.svelte";
 
   const tabs = [
     { name: "Actions", href: "/actions", icon: "" },
@@ -20,9 +21,11 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <AppBar>
-      <strong>When Did I?</strong>
-    </AppBar>
+    <Header>
+      <a slot="left" href="/actions" class="header-btn">back</a>
+      <svelte:fragment slot="middle">Change the Litterbox</svelte:fragment>
+      <button slot="right" class="header-btn">edit</button>
+    </Header>
   </svelte:fragment>
   <main class="p-2">
     <slot />
@@ -39,5 +42,4 @@
       </a>
     {/each}
   </nav>
-
 </AppShell>
