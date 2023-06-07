@@ -3,8 +3,8 @@ import type { PageLoad } from "./$types";
 
 export const ssr = false;
 
-export const load: PageLoad = async () => {
+export const load: PageLoad = ({ params }) => {
   return {
-    actions: await pb.collection("actions").getFullList(),
+    event: pb.collection("event").getOne(params.event_id),
   };
 };

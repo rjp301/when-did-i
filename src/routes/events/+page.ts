@@ -5,6 +5,6 @@ export const ssr = false;
 
 export const load: PageLoad = async () => {
   return {
-    actions: await pb.collection("actions").getFullList(),
+    events: await pb.collection("events").getFullList(),
   };
 };
