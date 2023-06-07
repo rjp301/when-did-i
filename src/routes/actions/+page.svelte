@@ -13,9 +13,7 @@
         <dt>{action.name}</dt>
         <dd><small>{format(action.created)}</small></dd>
       </span>
-			<span class="rounded-full badge bg-surface-200-700-token text-lg w-8 h-8">
-				▶
-			</span>
+      <a href={`/actions/${action.id}`} class="btn btn-icon">→</a>
     </div>
   {/each}
   <!-- ... -->
