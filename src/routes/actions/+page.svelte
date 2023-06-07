@@ -2,10 +2,9 @@
   import { AppShell } from "@skeletonlabs/skeleton";
   import Header from "$lib/components/Header.svelte";
   import Footer from "$lib/components/Footer.svelte";
+  import ActionItem from "$lib/components/ActionItem.svelte";
 
   import type { PageData } from "./$types";
-  import { format } from "timeago.js";
-
   export let data: PageData;
 </script>
 
@@ -16,18 +15,11 @@
     </Header>
   </svelte:fragment>
   <main class="p-2">
-    <dl class="list-dl divide-y">
+    <ul class="grid gap-2">
       {#each data.actions as action}
-        <div>
-          <span class="badge text-xl">{action.icon}</span>
-          <span class="flex-auto">
-            <dt>{action.name}</dt>
-            <dd><small>{format(action.created)}</small></dd>
-          </span>
-          <a href={`/actions/${action.id}`} class="btn btn-icon">→</a>
-        </div>
+        <ActionItem {action} />
       {/each}
-    </dl>
+    </ul>
   </main>
 
   <svelte:fragment slot="footer">

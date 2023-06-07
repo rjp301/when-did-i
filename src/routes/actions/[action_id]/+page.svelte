@@ -39,7 +39,7 @@
   <main class="p-2">
     <section>
       {#if !editing}
-        <hgroup class="flex gap-2">
+        <hgroup class="flex gap-2 mb-2">
           <span class="badge text-xl">{data.action.icon}</span>
           <span class="text-xl font-bold flex-auto">{data.action.name}</span>
           <button class="header-btn" on:click={remove}>delete</button>
