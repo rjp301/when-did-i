@@ -14,7 +14,7 @@
     const newAction = await pb.collection("actions").create({
       name,
       description,
-      icon: Array.from(icon)[0],
+      icon,
       user_id: $currentUser?.id,
     });
     goto("/actions");
@@ -41,6 +41,7 @@
         type="text"
         class="input"
         placeholder="Icon (emojis are nice)"
+        maxlength="1"
         required
         name="icon"
         bind:value={icon}

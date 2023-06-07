@@ -9,10 +9,21 @@
 
   export let data: PageData;
 
+  let editing = false;
+
   const remove = async () => {
     if (!confirm("Are you sure you wish to delete this action?")) return;
     await pb.collection("actions").delete(data.action.id);
     goto("/actions");
+  };
+
+  const handleEdit = async () => {
+    if (editing) {
+      pb.collection("actions").update(data.action.id, data.action);
+      editing = false;
+    } else {
+      editing = true;
+    }
   };
 </script>
 
@@ -20,17 +31,44 @@
   <svelte:fragment slot="header">
     <Header title={data.action.name}>
       <a href="/actions" slot="left" class="header-btn">back</a>
-      <button slot="right" class="header-btn">edit</button>
+      <button slot="right" on:click={handleEdit} class="header-btn"
+        >{editing ? "save" : "edit"}</button
+      >
     </Header>
   </svelte:fragment>
   <main class="p-2">
     <section>
-      <hgroup class="flex gap-2">
-        <span class="badge text-xl">{data.action.icon}</span>
-        <span class="text-xl font-bold flex-auto">{data.action.name}</span>
-        <button class="header-btn" on:click={remove}>delete</button>
-      </hgroup>
-      <p class="pl-2">{data.action.description || "No description"}</p>
+      {#if !editing}
+        <hgroup class="flex gap-2">
+          <span class="badge text-xl">{data.action.icon}</span>
+          <span class="text-xl font-bold flex-auto">{data.action.name}</span>
+          <button class="header-btn" on:click={remove}>delete</button>
+        </hgroup>
+        <p class="pl-2">{data.action.description || "No description"}</p>
+      {:else}
+        <form action="" on:submit={handleEdit} class="grid gap-2">
+          <input
+            type="text"
+            class="input"
+            maxlength="2"
+            placeholder="Icon"
+            bind:value={data.action.icon}
+          />
+          <input
+            type="text"
+            class="input"
+            placeholder="Name"
+            bind:value={data.action.name}
+          />
+          <input
+            type="text"
+            class="input"
+            placeholder="Description (optional)"
+            bind:value={data.action.description}
+          />
+          <input type="submit" hidden />
+        </form>
+      {/if}
     </section>
 
     <section>
