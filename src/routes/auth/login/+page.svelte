@@ -7,7 +7,7 @@
 
   const login = async () => {
     await pb.collection("users").authWithPassword(email, password);
-    goto("/");
+    goto("/actions");
   };
 </script>
 

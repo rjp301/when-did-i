@@ -13,7 +13,7 @@
       .create({ email, username, password, passwordConfirm });
     console.log(user);
     await pb.collection("users").authWithPassword(email, password);
-    goto("/");
+    goto("/actions");
   };
 </script>
 

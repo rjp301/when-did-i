@@ -7,7 +7,15 @@
   import "../app.css";
 
   import { AppBar, AppShell } from "@skeletonlabs/skeleton";
-  import { currentUser, pb } from "$lib/pocketbase";
+  import { page } from "$app/stores";
+
+  const tabs = [
+    { name: "Events", href: "/events", icon: "", id: 1 },
+    { name: "User", href: "/auth", icon: "", id: 2 },
+    { name: "Actions", href: "/actions", icon: "", id: 0 },
+  ];
+
+  $: currentTab = tabs.find((tab) => $page.url.pathname.startsWith(tab.href));
 </script>
 
 <AppShell>
@@ -21,8 +29,14 @@
   </main>
 
   <nav slot="footer" class="grid grid-cols-3 h-16 bg-surface-100-800-token">
-    <a href="/" class="h-full flex items-center justify-center">Actions</a>
-    <a href="/events" class="h-full flex items-center justify-center">Events</a>
-    <a href="/auth" class="h-full flex items-center justify-center">User</a>
+    {#each tabs.sort((a, b) => a.id - b.id) as tab}
+      <a
+        href={tab.href}
+        class={"h-full flex items-center justify-center " +
+          (currentTab?.id === tab.id ? "bg-surface-300-600-token " : "")}
+      >
+        {tab.name}
+      </a>
+    {/each}
   </nav>
 </AppShell>
