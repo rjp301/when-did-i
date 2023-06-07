@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { PageLoad } from "./$types";
+  import type { PageData } from "./$types";
   import { format } from "timeago.js";
 
-  export let data: PageLoad;
+  export let data: PageData;
 </script>
 
 <dl class="list-dl divide-y">
