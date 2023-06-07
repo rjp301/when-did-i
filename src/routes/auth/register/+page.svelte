@@ -1,4 +1,23 @@
-<form method="POST" action="/auth?/register" class="grid gap-4">
+<script lang="ts">
+  import { goto } from "$app/navigation";
+  import { pb } from "$lib/pocketbase";
+
+  let email: string;
+  let username: string;
+  let password: string;
+  let passwordConfirm: string;
+
+  const register = async () => {
+    const user = await pb
+      .collection("users")
+      .create({ email, username, password, passwordConfirm });
+    console.log(user);
+    await pb.collection("users").authWithPassword(email, password);
+    goto("/");
+  };
+</script>
+
+<form on:submit|preventDefault class="grid gap-4">
   <input placeholder="Email" class="input" name="email" type="text" required />
   <input
     placeholder="Username"
@@ -21,7 +40,11 @@
     type="password"
     required
   />
-  <button class="btn btn-sm w-full variant-filled" type="submit">
+  <button
+    class="btn btn-sm w-full variant-filled"
+    type="submit"
+    on:click={register}
+  >
     Register
   </button>
 </form>

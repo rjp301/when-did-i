@@ -10,10 +10,12 @@
 
 <section class="grid gap-4">
   {#if $currentUser}
-    Welcome to the app, {$currentUser.username}
-    <button on:click={logout}>Logout</button>
+    Logged in as {$currentUser.username}
+    <button class="btn btn-sm variant-filled w-full" on:click={logout}>
+      Logout
+    </button>
   {:else}
-    You are not logged in
+    Not logged in
     <a class="btn btn-sm variant-filled w-full" href="/auth/login">Login</a>
     <a class="btn btn-sm variant-filled w-full" href="/auth/register"
       >Register</a
