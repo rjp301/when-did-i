@@ -1,5 +1,5 @@
 <script>
-  export let title = "When Did I?";
+  export let title = "When Did I...?";
 </script>
 
 <header

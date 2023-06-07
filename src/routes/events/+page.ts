@@ -5,6 +5,8 @@ export const ssr = false;
 
 export const load: PageLoad = async () => {
   return {
-    events: await pb.collection("events").getFullList(),
+    events: await pb
+      .collection("events")
+      .getFullList({ expand: "action_id", sort: "-time" }),
   };
 };

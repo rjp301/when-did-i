@@ -45,7 +45,9 @@
           <span class="text-xl font-bold flex-auto">{data.action.name}</span>
           <button class="header-btn" on:click={remove}>delete</button>
         </hgroup>
-        <p class="pl-2 {data.action.description ? "" : "opacity-60"}" >{data.action.description || "No description"}</p>
+        <p class="pl-2 {data.action.description ? '' : 'opacity-60'}">
+          {data.action.description || "No description"}
+        </p>
       {:else}
         <form action="" on:submit={handleEdit} class="grid gap-2">
           <input
@@ -81,7 +83,7 @@
           {/each}
         </ul>
       {:else}
-        <p>No events recorded yet</p>
+        <p class="opacity-60">No events recorded yet</p>
       {/if}
     </section>
   </main>
