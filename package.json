@@ -35,6 +35,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"pocketbase": "^0.15.1"
+		"pocketbase": "^0.15.1",
+		"timeago.js": "^4.0.2"
 	}
 }

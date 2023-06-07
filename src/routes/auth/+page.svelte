@@ -1,6 +1,5 @@
 <script lang="ts">
   import { pb, currentUser } from "$lib/pocketbase";
-  import { append } from "svelte/internal";
 
   const logout = () => {
     pb.authStore.clear();

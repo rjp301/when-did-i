@@ -13,21 +13,16 @@
 <AppShell>
   <svelte:fragment slot="header">
     <AppBar>
-      When Did I?
-      <svelte:fragment slot="trail">
-        {#if $currentUser}
-          <div>{$currentUser.username}</div>
-        {/if}
-      </svelte:fragment>
+      <strong>When Did I?</strong>
     </AppBar>
   </svelte:fragment>
   <main class="p-2">
     <slot />
   </main>
 
-  <nav slot="footer" class="grid grid-cols-3 text-center h-12 bg-surface-100-800-token items-center">
-    <a href="/">Actions</a>
-    <a href="/events">Events</a>
-    <a href="/auth">User</a>
+  <nav slot="footer" class="grid grid-cols-3 h-16 bg-surface-100-800-token">
+    <a href="/" class="h-full flex items-center justify-center">Actions</a>
+    <a href="/events" class="h-full flex items-center justify-center">Events</a>
+    <a href="/auth" class="h-full flex items-center justify-center">User</a>
   </nav>
 </AppShell>
