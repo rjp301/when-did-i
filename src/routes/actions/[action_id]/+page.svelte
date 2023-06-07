@@ -2,6 +2,7 @@
   import { AppShell } from "@skeletonlabs/skeleton";
   import Header from "$lib/components/Header.svelte";
   import Footer from "$lib/components/Footer.svelte";
+  import EventItem from "$lib/components/EventItem.svelte";
 
   import type { PageData } from "./$types";
   import { pb } from "$lib/pocketbase";
@@ -44,7 +45,7 @@
           <span class="text-xl font-bold flex-auto">{data.action.name}</span>
           <button class="header-btn" on:click={remove}>delete</button>
         </hgroup>
-        <p class="pl-2">{data.action.description || "No description"}</p>
+        <p class="pl-2 {data.action.description ? "" : "opacity-60"}" >{data.action.description || "No description"}</p>
       {:else}
         <form action="" on:submit={handleEdit} class="grid gap-2">
           <input
@@ -76,9 +77,7 @@
       {#if data.events.length > 0}
         <ul class="divide-y">
           {#each data.events as event}
-            <li class="p-2">
-              {event.time}
-            </li>
+            <EventItem {event} />
           {/each}
         </ul>
       {:else}

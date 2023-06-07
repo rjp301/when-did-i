@@ -8,6 +8,6 @@ export const load: PageLoad = ({ params }) => {
     action: pb.collection("actions").getOne(params.action_id),
     events: pb
       .collection("events")
-      .getFullList({ filter: `action_id = '${params.action_id}'` }),
+      .getFullList({ filter: `action_id = '${params.action_id}'`, sort: "-time" }),
   };
 };
