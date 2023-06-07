@@ -12,7 +12,7 @@
 <AppShell>
   <svelte:fragment slot="header">
     <Header>
-      <button slot="right" class="header-btn">new</button>
+      <a href="/actions/new" slot="right" class="header-btn">new</a>
     </Header>
   </svelte:fragment>
   <main class="p-2">

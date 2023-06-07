@@ -4,10 +4,16 @@
   import Footer from "$lib/components/Footer.svelte";
 
   import type { PageData } from "./$types";
-
-  let editing = false;
+  import { pb } from "$lib/pocketbase";
+  import { goto } from "$app/navigation";
 
   export let data: PageData;
+
+  const remove = async () => {
+    if (!confirm("Are you sure you wish to delete this action?")) return;
+    await pb.collection("actions").delete(data.action.id);
+    goto("/actions");
+  };
 </script>
 
 <AppShell>
@@ -19,8 +25,11 @@
   </svelte:fragment>
   <main class="p-2">
     <section>
-      <span class="badge text-xl">{data.action.icon}</span>
-      <span class="text-xl font-bold flex-auto">{data.action.name}</span>
+      <hgroup class="flex gap-2">
+        <span class="badge text-xl">{data.action.icon}</span>
+        <span class="text-xl font-bold flex-auto">{data.action.name}</span>
+        <button class="header-btn" on:click={remove}>delete</button>
+      </hgroup>
       <p class="pl-2">{data.action.description || "No description"}</p>
     </section>
 
@@ -38,12 +47,6 @@
         <p>No events recorded yet</p>
       {/if}
     </section>
-
-    <style>
-      section {
-        @apply mb-2;
-      }
-    </style>
   </main>
 
   <svelte:fragment slot="footer">
