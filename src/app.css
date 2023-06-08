@@ -3,8 +3,3 @@ html,
 body {
 	@apply h-full overflow-hidden;
 }
-
-
-.header-btn {
-	@apply btn btn-sm variant-filled-surface;
-}

@@ -23,9 +23,7 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <Header title="New Action">
-      <a href="/actions" slot="left" class="header-btn">back</a>
-    </Header>
+    <Header title="New Action" backUrl="/actions" />
   </svelte:fragment>
   <main class="p-2">
     <form on:submit|preventDefault class="grid gap-2">
@@ -41,7 +39,7 @@
         type="text"
         class="input"
         placeholder="Icon (emojis are nice)"
-        maxlength="1"
+        maxlength="2"
         required
         name="icon"
         bind:value={icon}

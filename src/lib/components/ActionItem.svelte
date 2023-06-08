@@ -33,7 +33,7 @@
     <span class="badge text-xl">{action.icon}</span>
     <span class="flex-auto">
       <div>{action.name}</div>
-      <div class="text-sm">{time}</div>
+      <div class="text-sm">{action.last_time ? time : "never"}</div>
     </span>
   </button>
   <a href={`/actions/${action.id}`} class="btn btn-icon">→</a>

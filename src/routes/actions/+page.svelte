@@ -10,15 +10,16 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <Header>
-      <a href="/actions/new" slot="right" class="header-btn">new</a>
-    </Header>
+    <Header />
   </svelte:fragment>
   <main class="p-2">
     <ul class="grid gap-2">
       {#each data.actions as action}
         <ActionItem {action} />
       {/each}
+      <a href="/actions/new" class="btn w-full variant-filled"
+        >Add an Action...</a
+      >
     </ul>
   </main>
 

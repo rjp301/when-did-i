@@ -5,6 +5,6 @@ export const ssr = false;
 
 export const load: PageLoad = async () => {
   return {
-    actions: await pb.collection("actions").getFullList(),
+    actions: await pb.collection("actions").getFullList({ sort: "-last_time" }),
   };
 };

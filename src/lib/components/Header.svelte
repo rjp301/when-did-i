@@ -12,8 +12,8 @@
     {/if}
   </div>
   <span class="font-bold text-lg">{title}</span>
-  <div slot="trail">
+  <!-- <div slot="trail">
     <slot name="right" />
-  </div>
+  </div> -->
 </AppBar>
 
