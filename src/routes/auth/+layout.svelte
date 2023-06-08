@@ -5,6 +5,7 @@
 
   import { AppShell } from "@skeletonlabs/skeleton";
   import type { PageData } from "./$types";
+  import { format } from "timeago.js";
 
   export let data: PageData;
 
@@ -16,11 +17,7 @@
     <Header />
   </svelte:fragment>
   <main class="p-2">
-    <ul class="divide-y">
-      {#each data.events as event}
-        <EventItem {event} showAction />
-      {/each}
-    </ul>
+    <slot />
   </main>
 
   <svelte:fragment slot="footer">

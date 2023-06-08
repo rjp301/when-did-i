@@ -30,8 +30,7 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <Header title={data.action.name}>
-      <a href="/actions" slot="left" class="header-btn">back</a>
+    <Header title={data.action.name} backUrl="/actions">
       <button slot="right" on:click={handleEdit} class="header-btn"
         >{editing ? "save" : "edit"}</button
       >

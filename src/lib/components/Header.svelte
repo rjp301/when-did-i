@@ -1,13 +1,19 @@
 <script>
+  import { AppBar } from "@skeletonlabs/skeleton";
+
   export let title = "When Did I...?";
+  export let backUrl = "";
 </script>
 
-<header
-  class="grid grid-cols-3 items-center bg-primary-200-700-token py-2 px-4 h-20"
->
-  <div><slot name="left" /></div>
-  <div class="justify-self-center text-center font-bold text-lg">
-    {title}
+<AppBar regionRowMain="h-12">
+  <div slot="lead" class="w-7">
+    {#if backUrl}
+      <a href={backUrl} class="btn btn-icon">←</a>
+    {/if}
   </div>
-  <div class="justify-self-end"><slot name="right" /></div>
-</header>
+  <span class="font-bold text-lg">{title}</span>
+  <div slot="trail">
+    <slot name="right" />
+  </div>
+</AppBar>
+

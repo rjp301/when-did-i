@@ -29,7 +29,7 @@
       {time}
     </div>
     <div class="text-sm">
-      {#if showAction}
+      {#if showAction && !Array.isArray(event.expand.action_id)}
         {event.expand.action_id.icon} {event.expand.action_id.name}
       {/if}
     </div>
